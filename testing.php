@@ -1,5 +1,5 @@
 <?php
 
-echo 'sheikh is cutiya';
+echo 'Hassaan is painlun';
 
 ?>
