@@ -12,7 +12,9 @@
 */
 Route::get('/', 'HomeController@home');
 
-
 Route::get('/login', 'LoginController@login');
 
 Route::get('/studentDashboard', 'StudentController@dashboard');
+
+
+Route::get('/basic', 'HomeController@basic');

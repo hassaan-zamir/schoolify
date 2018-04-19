@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Review It.</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name="description" content="School Portal" />
 <meta name="keywords" content="" />
 <meta name="author" content="exotic-works.com" />
@@ -17,9 +17,9 @@ Twitter:
 Facebook:
 
 //////////////////////////////////////////////////////
- -->
+-->
 
-  <!-- Facebook and Twitter integration -->
+<!-- Facebook and Twitter integration -->
 <meta property="og:title" content=""/>
 <meta property="og:image" content=""/>
 <meta property="og:url" content=""/>
@@ -34,47 +34,58 @@ Facebook:
 <link rel="shortcut icon" href="favicon.ico">
 
 
-<link href="mycustom/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-      <link href="mycustom/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<style>
+    #loader {
+        transition: all .3s ease-in-out;
+        opacity: 1;
+        visibility: visible;
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        background: #fff;
+        z-index: 90000
+    }
 
-      <link href="css/sb-admin.css" rel="stylesheet">
-      <link href="css/style.css" rel="stylesheet">
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-      <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-      <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-      <style type="text/css">
-         body{
-         color: black;
-         }
-         .logo{
-           width:55px;
-         }
-         .color_set{
-         background: #3498db !important;
-         color: white;
-         }
-         .bg-dark{
-         background: #3498db !important;
-         color: white;
-         }
-         .nav-link-text{
-         color: white !important;
-         }
-         .icon_color{
-         color: white;
-         }
-         .set_divider_color{
-         border-top: 1px solid #fff !important;
-         }
-         .spacing{
-         margin-left: 10px;
-         }
-         .sidesection:hover{
-         background-color: #27ae60;
-         }
-         #mainNav.fixed-top.navbar-dark .sidenav-toggler{
-         background-color: #27ae60 !important;
-         }
-      </style>
+    #loader.fadeOut {
+        opacity: 0;
+        visibility: hidden
+    }
+
+    .spinner {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: calc(50% - 20px);
+        left: calc(50% - 20px);
+        background-color: #333;
+        border-radius: 100%;
+        -webkit-animation: sk-scaleout 1s infinite ease-in-out;
+        animation: sk-scaleout 1s infinite ease-in-out
+    }
+
+    @-webkit-keyframes sk-scaleout {
+        0% {
+            -webkit-transform: scale(0)
+        }
+        100% {
+            -webkit-transform: scale(1);
+            opacity: 0
+        }
+    }
+
+    @keyframes sk-scaleout {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0)
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 0
+        }
+    }
+</style>
+
+<link href="assets/themify-icons.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">

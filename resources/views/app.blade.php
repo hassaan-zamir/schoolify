@@ -4,8 +4,8 @@
       @include('includes.head')
       @yield('head_page')
   </head>
-  <body class="fixed-nav sticky-footer" id="page-top">
-  
+  <body class="app">
+
       @yield('content')
 
 
