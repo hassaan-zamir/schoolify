@@ -1,5 +1,5 @@
 <?php
 
-echo 'Hassaan is painlun';
+echo 'sheikh ki tui wich lund';
 
 ?>
