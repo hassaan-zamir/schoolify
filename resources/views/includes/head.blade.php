@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Review It.</title>
+<title>Schoolify</title>
 <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name="description" content="School Portal" />
 <meta name="keywords" content="" />
@@ -31,7 +31,7 @@ Facebook:
 <meta name="twitter:card" content="" />
 
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-<link rel="shortcut icon" href="favicon.ico">
+<link rel="shortcut icon" href="/favicon.ico">
 
 
 
@@ -87,5 +87,8 @@ Facebook:
     }
 </style>
 
-<link href="assets/themify-icons.css" rel="stylesheet">
-<link href="assets/css/style.css" rel="stylesheet">
+<link href="/assets/themify-icons.css" rel="stylesheet">
+<link href="/assets/css/style.css" rel="stylesheet">
+<script type="text/javascript" src="/assets/js/charts.js"></script>
+
+<script type="text/javascript" src="http://www.chartjs.org/samples/latest/utils.js"></script>
