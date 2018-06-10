@@ -17,7 +17,7 @@ class CreateSubjectsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('dep');
-            $table->string('classId');
+            $table->string('classId')->nullable();
             $table->timestamps();
         });
     }

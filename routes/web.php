@@ -50,6 +50,18 @@ Route::get('/edit_announcement/{id}', 'TeacherController@edit_announcement_view'
 Route::get('/feedback', 'TeacherController@feedback');
 // End - Teacher Routes
 
+
+// Admin Routes
+Route::get('/assign_teacher', 'AdminController@assign_teacher_view');
+Route::post('/assign_teacher', 'AdminController@assign_teacher')->name('AssignTeacher');
+
+Route::get('/assign_subject', 'AdminController@assign_subject_view');
+
+Route::post('/assign_subject', 'AdminController@assign_subject');
+
+
+
+
 // Auth::routes();
 //
 // Route::get('/home', 'HomeController@index')->name('home');

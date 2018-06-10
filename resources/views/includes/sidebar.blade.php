@@ -88,8 +88,8 @@
             </li>
             <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-light-blue-500 ti-pencil"></i> </span><span class="title">Assign</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
                 <ul class="dropdown-menu">
-                    <li class="nav-item dropdown"><a href="javascript:void(0);"><span>Assign Subject</span></a></li>
-                    <li class="nav-item dropdown"><a href="javascript:void(0);"><span>Assign Teacher</span></a></li>
+                    <li class="nav-item dropdown"><a href="assign_subject"><span>Assign Subject</span></a></li>
+                    <li class="nav-item dropdown"><a href="assign_teacher"><span>Assign Teacher</span></a></li>
                 </ul>
             </li>
             <li class="nav-item"><a class="sidebar-link" href="email.html"><span class="icon-holder"><i class="c-brown-500 ti-email"></i> </span><span class="title">Email</span></a></li>

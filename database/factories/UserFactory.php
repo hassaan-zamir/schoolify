@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,37 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Faculty::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'email' => $faker->unique()->safeEmail,
+        'phone' => mt_rand(1000000, 9999999), // secret
+        'status' => array_rand(array('Teacher','Admin')),
+    ];
+});
+
+$factory->define(App\Student::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'fatherName' => $faker->name,
+        'email' => $faker->unique()->safeEmail,
+        'phone' => mt_rand(1000000, 9999999), // secret
+        'secId' => rand(1,32),
+        'joined' => Carbon::now()->toDateTimeString(),
+        'address' => str_random(100),
+    ];
+});
+
+// $factory->define(App\Subject::class, function (Faker $faker) {
+//     return [
+//         'name' => $faker->name,
+//         'fatherName' => $faker->name,
+//         'email' => $faker->unique()->safeEmail,
+//         'phone' => mt_rand(1000000, 9999999), // secret
+//         'secId' => rand(1,32),
+//         'joined' => Carbon::now()->toDateTimeString(),
+//         'address' => str_random(100),
+//     ];
+// });
