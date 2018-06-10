@@ -12,9 +12,15 @@
 */
 
 
-Route::get('/', 'HomeController@home');
+Route::get('/', 'StudentController@dashboard');
 
-Route::get('/login', 'LoginController@login');
+Route::prefix('faculty')->group(function(){
+  Route::get('/login','Auth\FacultyLoginController@showLoginForm')->name('faculty.login');
+  Route::post('/login','Auth\FacultyLoginController@login')->name('faculty.login.submit');
+  Route::get('/', 'TeacherController@login')->name('admin.dashboard');
+});
+
+
 
 Route::get('/studentDashboard', 'StudentController@dashboard');
 
@@ -50,6 +56,22 @@ Route::get('/edit_announcement/{id}', 'TeacherController@edit_announcement_view'
 Route::get('/feedback', 'TeacherController@feedback');
 // End - Teacher Routes
 
+
+// Admin Routes
+Route::get('/assign_teacher', 'AdminController@assign_teacher_view');
+Route::post('/assign_teacher', 'AdminController@assign_teacher')->name('AssignTeacher');
+
+Route::get('/assign_subject', 'AdminController@assign_subject_view');
+
+Route::post('/assign_subject', 'AdminController@assign_subject');
+
+
+
+
 // Auth::routes();
 //
 // Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

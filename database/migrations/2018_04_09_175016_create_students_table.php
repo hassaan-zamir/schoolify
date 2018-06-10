@@ -19,9 +19,11 @@ class CreateStudentsTable extends Migration
             $table->string('fatherName');
             $table->string('phone');
             $table->string('email');
+            $table->string('password');
             $table->string('address');
             $table->timestamp('joined');
             $table->integer('secId');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
