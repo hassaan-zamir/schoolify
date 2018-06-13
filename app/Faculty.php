@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Faculty extends Authenticatable
 {
+
     use Notifiable;
 
     protected $guard = 'faculty';

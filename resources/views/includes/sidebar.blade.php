@@ -22,40 +22,16 @@
 
             <li class="nav-item mT-30 active"><a class="sidebar-link" href="index.html"><span class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span class="title">Dashboard</span></a></li>
 
+
+            <!-- Student Navs -->
+
+            @if(Auth::guard('students')->check())
             <li class="nav-item "><a class="sidebar-link" href="attendance"><span class="icon-holder"><i class="c-orange-500 ti-pencil"></i> </span><span class="title">Attendance</span></a></li>
             <li class="nav-item "><a class="sidebar-link" href="academic"><span class="icon-holder"><i class="c-deep-orange-500 ti-medall"></i> </span><span class="title">Academic</span></a></li>
             <li class="nav-item "><a class="sidebar-link" href="announcement"><span class="icon-holder"><i class="c-deep-purple-500 ti-announcement"></i> </span><span class="title">Announcement</span></a></li>
             <li class="nav-item"><a class="sidebar-link" href="give_feedback"><span class="icon-holder"><i class="c-brown-500 ti-email"></i> </span><span class="title">Feedback</span></a></li>
 
-
-
-            <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-orange-500 ti-pencil"></i> </span><span class="title">Attendance</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
-                <ul class="dropdown-menu">
-                    <li class="nav-item dropdown"><a href="add_attendance"><span>Add Attendance</span></a></li>
-                    <li class="nav-item dropdown"><a href="edit_attendance"><span>Edit Attendance</span></a></li>
-                </ul>
-            </li>
-
-            <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-deep-orange-500 ti-medall"></i> </span><span class="title">Evaluations</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
-                <ul class="dropdown-menu">
-                    <li class="nav-item dropdown"><a href="add_evaluation"><span>Add Evaluations</span></a></li>
-                    <li class="nav-item dropdown"><a href="edit_evaluation"><span>Edit Evaluations</span></a></li>
-                </ul>
-            </li>
-
-            <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-deep-purple-500 ti-announcement"></i> </span><span class="title">Announcement</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
-                <ul class="dropdown-menu">
-                    <li class="nav-item dropdown"><a href="make_announcement"><span>Make Attendance</span></a></li>
-                    <li class="nav-item dropdown"><a href="edit_announcement"><span>Edit Attendance</span></a></li>
-                </ul>
-            </li>
-            <li class="nav-item"><a class="sidebar-link" href="feedback"><span class="icon-holder"><i class="c-brown-500 ti-email"></i> </span><span class="title">Feedback</span></a></li>
-
-
-
-
-
-
+            @elseif(Auth::guard('faculty')->check() && \Auth::user()->status == 1)
             <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-teal-500 ti-view-list-alt"></i> </span><span class="title">Classes</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
                 <ul class="dropdown-menu">
                     <li class="nav-item dropdown"><a href="javascript:void(0);"><span>Add Class</span></a></li>
@@ -92,7 +68,45 @@
                     <li class="nav-item dropdown"><a href="assign_teacher"><span>Assign Teacher</span></a></li>
                 </ul>
             </li>
-            <li class="nav-item"><a class="sidebar-link" href="email.html"><span class="icon-holder"><i class="c-brown-500 ti-email"></i> </span><span class="title">Email</span></a></li>
+
+
+            @elseif( Auth::guard('faculty')->check())
+            <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-orange-500 ti-pencil"></i> </span><span class="title">Attendance</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item dropdown"><a href="add_attendance"><span>Add Attendance</span></a></li>
+                    <li class="nav-item dropdown"><a href="edit_attendance"><span>Edit Attendance</span></a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-deep-orange-500 ti-medall"></i> </span><span class="title">Evaluations</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item dropdown"><a href="add_evaluation"><span>Add Evaluations</span></a></li>
+                    <li class="nav-item dropdown"><a href="edit_evaluation"><span>Edit Evaluations</span></a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="c-deep-purple-500 ti-announcement"></i> </span><span class="title">Announcement</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item dropdown"><a href="make_announcement"><span>Make Attendance</span></a></li>
+                    <li class="nav-item dropdown"><a href="edit_announcement"><span>Edit Attendance</span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a class="sidebar-link" href="feedback"><span class="icon-holder"><i class="c-brown-500 ti-email"></i> </span><span class="title">Feedback</span></a></li>
+
+            @endif
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- <li class="nav-item"><a class="sidebar-link" href="email.html"><span class="icon-holder"><i class="c-brown-500 ti-email"></i> </span><span class="title">Email</span></a></li>
             <li class="nav-item"><a class="sidebar-link" href="compose.html"><span class="icon-holder"><i class="c-blue-500 ti-share"></i> </span><span class="title">Compose</span></a></li>
             <li class="nav-item"><a class="sidebar-link" href="calendar.html"><span class="icon-holder"><i class="c-deep-orange-500 ti-calendar"></i> </span><span class="title">Calendar</span></a></li>
             <li class="nav-item"><a class="sidebar-link" href="chat.html"><span class="icon-holder"><i class="c-deep-purple-500 ti-comment-alt"></i> </span><span class="title">Chat</span></a></li>
@@ -131,6 +145,9 @@
                     </li>
                 </ul>
             </li>
+
+
+             -->
         </ul>
     </div>
 </div>

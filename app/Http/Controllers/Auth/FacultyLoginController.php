@@ -25,7 +25,7 @@ class FacultyLoginController extends Controller
     ]);
 
     if (Auth::guard('faculty')->attempt( ['email' => $request->email, 'password' => $request->password] , $request->remember)){
-      return redirect()->intended(route('pages.add_attendance'));
+      return redirect()->route('addAttendance');
     }
 
     return redirect()->back()->withInput($request->only('email','remember'));

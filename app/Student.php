@@ -14,6 +14,6 @@ class Student extends Model
    * @var array
    */
   protected $fillable = [
-      'name', 'fatherName', 'email', 'phone','address', 'joined', 'secId'
+      'name', 'fatherName', 'email', 'phone','address', 'joined', 'secId', 'password'
   ];
 }

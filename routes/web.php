@@ -42,8 +42,8 @@ Route::get('/give_feedback', 'StudentController@feedback');
 
 
 // Teacher Routes
-Route::get('/add_attendance', 'TeacherController@add_attendance');
-Route::get('/edit_attendance', 'TeacherController@edit_attendance');
+Route::get('/add_attendance', 'TeacherController@add_attendance')->name('addAttendance')->middleware('auth:faculty');
+Route::get('/edit_attendance', 'TeacherController@edit_attendance')->middleware('auth:faculty');
 
 Route::get('/add_evaluation', 'TeacherController@add_evaluation');
 Route::get('/edit_evaluation', 'TeacherController@edit_evaluation');
@@ -75,3 +75,10 @@ Route::post('/assign_subject', 'AdminController@assign_subject');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+
+// Practice Vue.js
+Route::get('/vue', 'TeacherController@vue')->middleware('auth:faculty');

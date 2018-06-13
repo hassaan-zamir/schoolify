@@ -12,11 +12,18 @@ class TeacherController extends Controller
     $this->middleware('auth:faculty');
   }
 
+  public function vue(){
+    return view('pages.vue');
+  }
+
+
   public function login(){
     return view('pages.add_attendance');
   }
 
   public function add_attendance(){
+
+
     return view('pages.add_attendance');
   }
 
