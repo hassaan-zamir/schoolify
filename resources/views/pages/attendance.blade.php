@@ -105,19 +105,14 @@
                                                 <script type="text/javascript">
                                                      var chartjson = {
                                                        "title": "Attendence",
-                                                       "data": [{
-                                                         "name": "Science",
-                                                         "score": 100
-                                                       }, {
-                                                         "name": "Physics",
-                                                         "score": 98
-                                                       }, {
-                                                         "name": "Arts",
-                                                         "score": 100
-                                                       }, {
-                                                         "name": "Urdu",
-                                                         "score": 89
-                                                        }],
+                                                       "data": [
+                                                       @foreach($subjects as $subject)
+                                                          {
+                                                          "name": "{{$subject->name}}",
+                                                          "score": {{$subject->score}}
+                                                        },
+                                                       @endforeach
+                                                       ],
                                                        "xtitle": "Attendence",
                                                        "ytitle": "Marks",
                                                        "ymax": 100,
@@ -127,7 +122,7 @@
                                                      }
 
                                                      //chart colors
-                                                     var colors = ['one', 'two', 'three', 'four'];
+                                                     var colors = ['one', 'two', 'three', 'four','five','six'];
 
                                                      //constants
                                                      var TROW = 'tr',
@@ -202,24 +197,20 @@
                                                           </tr>
                                                       </thead>
                                                       <tbody>
+
+
+
+                                                        @foreach($subjects as $subject)
                                                           <tr>
-                                                              <th scope="row">1</th>
-                                                              <td>Urdu</td>
-                                                              <td>10</td>
-                                                              <td>2</td>
+                                                              <th scope="row">{{ $loop->iteration }}</th>
+                                                              <td>{{ $subject->name }}</td>
+                                                              <td>{{ $subject->present }}</td>
+                                                              <td>{{ $subject->absent }}</td>
                                                           </tr>
-                                                          <tr>
-                                                              <th scope="row">1</th>
-                                                              <td>English</td>
-                                                              <td>10</td>
-                                                              <td>2</td>
-                                                          </tr>
-                                                          <tr>
-                                                              <th scope="row">1</th>
-                                                              <td>Maths</td>
-                                                              <td>10</td>
-                                                              <td>2</td>
-                                                          </tr>
+
+                                                          @endforeach
+
+
                                                       </tbody>
                                                   </table>
                                               </div>

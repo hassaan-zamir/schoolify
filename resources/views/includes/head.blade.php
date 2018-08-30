@@ -89,6 +89,10 @@ Facebook:
 
 <link href="/assets/themify-icons.css" rel="stylesheet">
 <link href="/assets/css/style.css" rel="stylesheet">
-<script type="text/javascript" src="/assets/js/charts.js"></script>
+<link href="/assets/css/fastselect.css" rel="stylesheet">
 
-<script type="text/javascript" src="http://www.chartjs.org/samples/latest/utils.js"></script>
+<script type="text/javascript" src="/assets/js/charts.js"></script>
+<link href="/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+
+<!-- <script type="text/javascript" src="http://www.chartjs.org/samples/latest/utils.js"></script> -->

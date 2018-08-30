@@ -28,4 +28,8 @@ class Faculty extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function classes(){
+       return $this->hasMany('App\AssignTeacher');
+    }
 }

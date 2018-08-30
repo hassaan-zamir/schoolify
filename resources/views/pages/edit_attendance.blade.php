@@ -31,76 +31,130 @@
                                                   <h4 class="c-grey-900 mB-20">Edit Attendance</h4>
 
                                                   <div class="mT-30">
-                                                    <form>
+
+                                                    @if (Session::has('flash_message'))
+                                                        <div class="alert alert-success">
+                                                            {{ Session::get('flash_message') }}
+                                                        </div>
+                                                    @endif
+
+
+                                                      {{ csrf_field() }}
                                                         <div class="form-row">
                                                             <div class="form-group col-md-3">
                                                                 <label for="inputEmail4">Class</label>
-                                                                <select class="form-control" name="">
-                                                                    <option value="">2-B</option>
-                                                                    <option value="">3-B</option>
-                                                                    <option value="">4-C</option>
+                                                                <select class="form-control classes" name="sectionId">
+                                                                  <option value="0" selected disabled>Select Class </option>
+
+                                                                    @foreach($classes as $class)
+                                                                     <option sectionId="{{ $class->sectionId }}" value="{{ $class->sectionId }}">  {{ $class->class }}-{{ $class->sec }} </option>
+                                                                    @endforeach
+
                                                                 </select>
                                                             </div>
                                                             <div class="form-group col-md-3">
                                                                 <label for="inputEmail4">Subject</label>
-                                                                <select class="form-control" name="">
-                                                                    <option value="">English</option>
-                                                                    <option value="">Urdu</option>
-                                                                    <option value="">Maths</option>
+                                                                <select class="form-control subjects" name="subjectId">
+                                                                  <option value="0" selected disabled>Select Subject </option>
+                                                                  @foreach($classes as $class)
+                                                                   <option sectionId="{{ $class->sectionId }}"  class="subject"  value="{{ $class->subjectId }}">  {{ $class->name }} </option>
+                                                                  @endforeach
+
                                                                 </select>
                                                             </div>
-                                                            <div class="form-group col-md-3">
-                                                                <label for="inputPassword4">Date</label>
-                                                                <input type="date" class="form-control" id="inputPassword4" placeholder="Password">
-                                                            </div>
+
 
                                                             <div class="form-group col-md-2" >
-                                                                <button type="submit" class="btn btn-primary uploadButton">Edit</button>
+                                                                <button type="submit" class="btn btn-primary uploadButton getResults">Go</button>
 
                                                             </div>
                                                         </div>
 
 
-                                                    </form>
-                                                </div>
 
-                                                  <table class="table table-striped">
-                                                      <thead>
-                                                          <tr>
-                                                              <th scope="col">#</th>
-                                                              <th scope="col">Student Name</th>
-                                                              <th scope="col">Parent Name</th>
-                                                              <th scope="col">Attendance</th>
-                                                          </tr>
-                                                      </thead>
-                                                      <tbody>
-                                                          <tr>
-                                                              <th scope="row">1</th>
-                                                              <td>Mark</td>
-                                                              <td>Otto</td>
-                                                              <td><input type="checkbox" class="form-check-input" />  </td>
-                                                          </tr>
-                                                          <tr>
-                                                              <th scope="row">2</th>
-                                                              <td>Jacob</td>
-                                                              <td>Thornton</td>
-                                                              <td>@fat</td>
-                                                          </tr>
-                                                          <tr>
-                                                              <th scope="row">3</th>
-                                                              <td>Larry</td>
-                                                              <td>the Bird</td>
-                                                              <td>@twitter</td>
-                                                          </tr>
-                                                      </tbody>
-                                                  </table>
+                                                        <table class="table table-striped attendanceTable">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">#</th>
+                                                                    <th scope="col">Topic</th>
+                                                                    <th scope="col">Date</th>
+                                                                    <th scope="col">Options</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody class="attendanceInfo">
+                                                            </tbody>
+                                                        </table>
                                               </div>
                                           </div>
                                       </div>
+
+                              </div>
                       </div>
                   </div>
               </div>
             @include('includes.footer_content')
+            @section('footer_page')
+            <script>
+                  $(document).ready(function(){
+                      // Hide Students table
+                      $(".attendanceTable").hide();
+
+                      function callAjax(sectionId, subjectId){
+
+                        $.ajax({
+                          method: "POST",
+                          url: "/get_attendances",
+
+
+                          data: { _token: '<?php echo csrf_token() ?>', sectionId: sectionId, subjectId: subjectId },
+
+                          })
+                          .done(function( data ) {
+                            $(".attendanceTable").fadeIn("slow");
+                            $(".attendanceInfo").html("");
+                              x = 1;
+
+                              $.each(data, function(i, item){
+
+                                  $(".attendanceInfo").append('<tr><td>'+x+'</td><td>'+item.topic+'</td><td>'+item.date+'</td><td> <a href="/edit_attendance/'+item.id+'"> Edit </a> </td></tr>');
+                                  x++;
+                              });
+                          });
+
+                      }
+
+                      sectionId = $(".classes option:selected").attr('sectionId');
+
+                      $(".classes").change(function(){
+
+
+                          var option = $('option:selected', this).attr('sectionId');
+                          sectionId = option;
+                          $(".subject[sectionid="+sectionId+"]").show();
+                          $(".subject[sectionid!="+sectionId+"]").hide();
+
+
+                      });
+
+
+
+                      $(".subject[sectionid!="+sectionId+"]").hide();
+
+
+                      $(".getResults").click(function(){
+                          sectionId = $(".classes option:selected").attr('sectionId');
+                          subjectId = $(".subjects option:selected").val();
+
+                          callAjax(sectionId, subjectId);
+
+
+                      });
+
+
+
+                  });
+            </script>
+            @stop
         </div>
   </div>
 

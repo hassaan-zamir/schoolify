@@ -31,7 +31,6 @@ $factory->define(App\Faculty::class, function (Faker $faker) {
         'phone' => mt_rand(1000000, 9999999), // secret
         'status' => array_rand(array('Teacher','Admin')),
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-
     ];
 });
 
@@ -45,7 +44,6 @@ $factory->define(App\Student::class, function (Faker $faker) {
         'joined' => Carbon::now()->toDateTimeString(),
         'address' => str_random(100),
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-
     ];
 });
 

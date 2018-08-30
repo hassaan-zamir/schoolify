@@ -57,6 +57,7 @@
                         <i class="fa fa-lock" aria-hidden="true"></i>
                     </span>
                 </div>
+
                 @if ($errors->has('password'))
                     <span class="invalid-feedback" style="display:block;margin-left:10px;marign-top:-10px;font-size:14px;">
                         <strong><i class="fa fa-exclamation-triangle" ></i> &nbsp   {{ $errors->first('password') }}</strong>
@@ -86,6 +87,9 @@
                     </a>
                 </div> -->
             </form>
+
+
+    
 
 
         </div>

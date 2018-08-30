@@ -16,6 +16,8 @@ class CreateEvaluationMarksTable extends Migration
         Schema::create('evaluationMarks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('evaluationId');
+            $table->integer('studentId');
+
             $table->integer('obtained');
             $table->string('remarks');
             $table->timestamps();

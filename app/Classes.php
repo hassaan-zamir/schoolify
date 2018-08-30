@@ -16,4 +16,6 @@ class Classes extends Model
   protected $fillable = [
       'class', 'totalStrength'
   ];
+
+
 }

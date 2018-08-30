@@ -24,7 +24,7 @@ class AssignSubjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'class' => 'required',
+            'class' => 'required|int',
             'subject' => 'required'
         ];
     }

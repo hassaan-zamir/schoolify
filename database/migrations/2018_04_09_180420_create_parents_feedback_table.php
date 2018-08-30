@@ -15,9 +15,15 @@ class CreateParentsFeedbackTable extends Migration
     {
         Schema::create('parentsFeedback', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('subjectId');
+            $table->string('title');
+
             $table->integer('studentId');
-            $table->string('remarks');
-            
+            $table->integer('facultyId');
+            $table->integer('seen')->default(0);
+
+            $table->string('feedback');
+
             $table->timestamps();
         });
     }

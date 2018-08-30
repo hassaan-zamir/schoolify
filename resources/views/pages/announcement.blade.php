@@ -73,6 +73,9 @@
            .six {
            background: #9B59B6;
            }
+           .center {
+             text-align:center;
+           }
     </style>
 @stop
 
@@ -98,39 +101,55 @@
                                               <div class="bgc-white bd bdrs-3 p-20 mB-20">
                                                   <h4 class="c-grey-900 mB-20">Announcements</h4>
 
-                                                  <div class="email-content-wrapper">
+                                                  @foreach($announcements as $announcement)
+
+                                                  <div class="email-content-wrapper" style="border-left:3px solid #3498db;">
                                                       <div class="peers ai-c jc-sb pX-40 pY-30">
                                                           <div class="peers peer-greed">
-                                                              <div class="peer mR-20"><img class="bdrs-50p w-3r h-3r" alt="" src="https://randomuser.me/api/portraits/men/11.jpg"></div>
-                                                              <div class="peer"><small>Nov, 02 2017</small>
-                                                                  <h5 class="c-grey-900 mB-5">Sheikh Usman</h5><span></span></div>
-                                                          </div>
-                                                          <!-- <div class="peer"><a href="" class="btn btn-danger bdrs-50p p-15 lh-0"><i class="fa fa-trash"></i></a></div> -->
-                                                      </div>
-                                                      <div class="bdT pX-40 pY-30">
-                                                          <h4>Title of this email goes here</h4>
-                                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                                      </div>
-                                                  </div>
+                                                              <div class="peer mR-20">
+                                                                <i class="fa fa-bullhorn fa-3x" style=""></i>
+
+                                                                  <!-- <img class="bdrs-50p w-3r h-3r" alt="" src="https://randomuser.me/api/portraits/men/11.jpg"> -->
+                                                              </div>
+                                                              <div class="peer">
+                                                                <small>{{ \Carbon\Carbon::parse($announcement->updated_at)->format('d-m-Y') }}</small>
+                                                                <h5 class="c-grey-900 mB-5">{{ $announcement->facultyName }}</h5>
+                                                                <!-- <span>To: email@gmail.com</span> -->
+                                                              </div>
+                                                            </div>
+                                                            <div class="peer">
+                                                              <!-- <a href="" class="btn btn-danger bdrs-50p p-15 lh-0"><i class="fa fa-reply"></i></a>
+                                                             -->
+                                                           </div></div>
+                                                              <div class=" pX-40 pY-30"><h4>{{ $announcement->title }}</h4>
+                                                                <p>{!! $announcement->summary !!}</p>
 
 
-                                                  <div class="email-content-wrapper">
-                                                      <div class="peers ai-c jc-sb pX-40 pY-30">
-                                                          <div class="peers peer-greed">
-                                                              <div class="peer mR-20"><img class="bdrs-50p w-3r h-3r" alt="" src="https://randomuser.me/api/portraits/men/11.jpg"></div>
-                                                              <div class="peer"><small>Nov, 02 2017</small>
-                                                                  <h5 class="c-grey-900 mB-5">Sheikh Usman</h5><span></span></div>
+
+
+                                                              <br />
+
+                                                              @if(!empty($announcement->attachment))
+                                                              <div class="existingAttachment">
+                                                                <b>Attachments</b> <br /> <br />
+                                                                @foreach($announcement->attachment as $attachment)
+                                                                  <a href="/uploads/attachments/{{ $attachment }}" target="_blank">{{ $attachment }}</a> <br />
+                                                                @endforeach
+                                                              </div>
+                                                              @endif
+
+
+
+
+                                                              </div>
                                                           </div>
-                                                          <!-- <div class="peer"><a href="" class="btn btn-danger bdrs-50p p-15 lh-0"><i class="fa fa-trash"></i></a></div> -->
-                                                      </div>
-                                                      <div class="bdT pX-40 pY-30">
-                                                          <h4>Title of this email goes here</h4>
-                                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                                      </div>
+                                                          <br />
+                                                  @endforeach
+
+
+                                                  <div class="center">
+                                                    <br />
+                                                    {{ $announcements->links() }}
                                                   </div>
 
                                               </div>

@@ -17,8 +17,10 @@ class CreateAnnouncementTable extends Migration
             $table->increments('id');
             $table->integer('classId');
             $table->integer('sectionId');
+            $table->integer('facultyId');
+
             $table->string('title');
-            $table->string('summary');
+            $table->text('summary');
             $table->string('attachment');
             $table->timestamps();
         });

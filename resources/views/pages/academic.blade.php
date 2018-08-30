@@ -98,118 +98,34 @@
                                               <div class="bgc-white bd bdrs-3 p-20 mB-20">
                                                   <h4 class="c-grey-900 mB-20">Academic Record</h4>
 
-                                                  @if(empty($subject))
                                                   <div class="mT-30">
                                                     <div class="alert alert-primary" role="alert">Select a subject to view furthur details.</div>
 
                                                   </div>
 
                                                   <br />
+                                                  
                                                   <table class="table table-striped">
                                                       <thead>
                                                           <tr>
                                                               <th scope="col">#</th>
                                                               <th scope="col">Subject</th>
-                                                              <th scope="col">Grade</th>
+                                                              <th scope="col">Teacher</th>
                                                           </tr>
                                                       </thead>
                                                       <tbody>
+                                                        @foreach($subjects as $subject)
                                                           <tr>
-                                                              <th scope="row">1</th>
-                                                              <td><a href="academic/urdu">Urdu</a></td>
-                                                              <td>B+</td>
+                                                              <th scope="row">{{ $loop->iteration }}</th>
+                                                              <td><a href="academic/{{ strtolower($subject->name) }}">{{ $subject->name }}</a></td>
+                                                              <td>{{ $subject->facultyName }}</td>
 
                                                           </tr>
-                                                          <tr>
-                                                              <th scope="row">1</th>
-                                                              <td>English</td>
-                                                              <td>10</td>
-                                                          </tr>
-                                                          <tr>
-                                                              <th scope="row">1</th>
-                                                              <td>Maths</td>
-                                                              <td>10</td>
-                                                          </tr>
+                                                        @endforeach
                                                       </tbody>
                                                   </table>
-                                                  @else
-                                                  <div class="bgc-light-blue-500 c-white p-20">
-                                                      <div class="peers ai-c jc-sb gap-40">
-                                                          <div class="peer peer-greed">
-                                                              <h5>Urdu</h5>
-                                                              <p class="mB-0">Academic Report</p>
-                                                          </div>
-                                                          <div class="peer">
-                                                              <h3 class="text-right">B+</h3></div>
-                                                      </div>
-                                                  </div>
 
-                                                  <br />
-                                                  <table class="table table-striped">
-                                                      <thead>
-                                                          <tr>
-                                                              <th scope="col">#</th>
-                                                              <th scope="col">Title</th>
-                                                              <th scope="col">Total Marks</th>
-                                                              <th scope="col">Obtained Marks</th>
-                                                              <th scope="col">Progress</th>
 
-                                                          </tr>
-                                                      </thead>
-                                                      <tbody>
-                                                          <tr>
-                                                              <th scope="row">1</th>
-                                                              <td>Quiz 1</td>
-                                                              <td>10</td>
-                                                              <td>9</td>
-                                                              <td>
-                                                                 <div class="progress mT-10">
-                                                                    <div class="progress-bar bgc-green-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:80%"><span class="sr-only">80% Complete</span></div>
-                                                                </div>
-                                                              </td>
-
-                                                          </tr>
-                                                          <tr>
-                                                              <th scope="row">2</th>
-                                                              <td>Quiz 2</td>
-                                                              <td>10</td>
-                                                              <td>9</td>
-                                                              <td>
-                                                                 <div class="progress mT-10">
-                                                                    <div class="progress-bar bgc-green-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:80%"><span class="sr-only">80% Complete</span></div>
-                                                                </div>
-                                                              </td>
-
-                                                          </tr>
-                                                          <tr>
-                                                              <th scope="row">3</th>
-                                                              <td>Quiz 3</td>
-                                                              <td>10</td>
-                                                              <td>9</td>
-                                                              <td>
-                                                                 <div class="progress mT-10">
-                                                                    <div class="progress-bar bgc-green-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:80%"><span class="sr-only">80% Complete</span></div>
-                                                                </div>
-                                                              </td>
-
-                                                          </tr>
-                                                          <tr>
-                                                              <th scope="row">4</th>
-                                                              <td>Midterm</td>
-                                                              <td>25</td>
-                                                              <td>20</td>
-                                                              <td>
-                                                                 <div class="progress mT-10">
-                                                                    <div class="progress-bar bgc-green-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:80%"><span class="sr-only">80% Complete</span></div>
-                                                                </div>
-                                                              </td>
-
-                                                          </tr>
-                                                      </tbody>
-
-                                                
-                                                  </table>
-                                                  @endif
 
                                               </div>
                                           </div>

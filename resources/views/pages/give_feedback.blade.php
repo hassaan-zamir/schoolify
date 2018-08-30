@@ -35,26 +35,38 @@
                                                   <h4 class="c-grey-900 mB-20">Feedback</h4>
 
                                                   <div class="mT-30">
-                                                    <form>
-                                                        <div class="form-row">
+
+                                                    @if (Session::has('flash_message'))
+                                                        <div class="alert alert-success">
+                                                            {{ Session::get('flash_message') }}
+                                                        </div>
+                                                    @endif
+
+                                                    @include('includes.alerts')
+
+
+                                                    <form action="/submit_feedback" method="post">
+                                                      {{ csrf_field() }}
+                                                       <div class="form-row">
                                                             <div class="form-group col-md-4">
-                                                                <select class="form-control" name="">
-                                                                    <option value="">Choose Subject</option>
-                                                                    <option value="">Urdu</option>
-                                                                    <option value="">Maths</option>
+                                                                <select class="form-control" name="subjectId">
+                                                                    <option value="0" selected disabled>Choose Subject</option>
+                                                                    @foreach($subjects as $subject)
+                                                                    <option value="{{ $subject->subjectId }}">{{ $subject->name }}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
 
                                                         <div class="form-row">
                                                             <div class="form-group col-md-4">
-                                                                <input type="text" name="" value="" class="form-control" placeHolder="Title">
+                                                                <input type="text" name="title" value="" class="form-control" placeHolder="Title">
                                                             </div>
                                                         </div>
 
                                                         <div class="form-row">
                                                             <div class="form-group col-md-4">
-                                                                <textarea name="name" rows="8" cols="80" class="form-control" placeHolder="Message"></textarea>
+                                                                <textarea name="message" rows="8" cols="80" class="form-control" placeHolder="Message"></textarea>
                                                             </div>
                                                         </div>
 

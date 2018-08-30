@@ -34,6 +34,13 @@
 
 
                                                   <div class="mT-30">
+
+                                                    @if (Session::has('flash_message'))
+                                                        <div class="alert alert-success">
+                                                            {{ Session::get('flash_message') }}
+                                                        </div>
+                                                    @endif
+
                                                     @if(empty($announcementId))
                                                       <table class="table table-striped">
                                                           <thead>
@@ -45,19 +52,24 @@
                                                               </tr>
                                                           </thead>
                                                           <tbody>
-                                                              <tr>
-                                                                  <th scope="row">1</th>
-                                                                  <td>Eid Holidays</td>
-                                                                  <td>Everybody</td>
-                                                                  <td><a href="edit_announcement/1">Edit </a> | Delete</td>
-                                                              </tr>
-                                                              <tr>
-                                                                  <th scope="row">1</th>
-                                                                  <td>Eid Holidays</td>
-                                                                  <td>Everybody</td>
-                                                                  <td>Edit | Delete</td>
-                                                              </tr>
+                                                            @foreach($announcements as $announcement)
+                                                                <tr>
+                                                                  <th scope="th"> {{ $loop->iteration }} </th>
+                                                                  <td>{{ $announcement->title }}</td>
+                                                                  <td>
+                                                                      @if( $announcement->classId == 0 && $announcement->sectionId == 0)
+                                                                        Everyone
+                                                                      @elseif( $announcement->classId != 0 && $announcement->sectionId == 0)
+                                                                      Class  {{ \App\Classes::find($announcement->classId)->class }} - All Sections
+                                                                      @elseif( $announcement->classId != 0 && $announcement->sectionId != 0)
+                                                                      Class   {{ \App\Classes::find($announcement->classId)->class }} - Section  {{ \App\Section::find($announcement->sectionId)->sec }}
+                                                                      @endif
 
+                                                                  </td>
+                                                                  <td> <a href="edit_announcement/{{ $announcement->id }}"> Edit </a> | <a class="delete" announcementId="{{ $announcement->id }}" href="delete_announcement/{{ $announcement->id }}"> Delete </a> </td>
+                                                                </tr>
+
+                                                            @endforeach
                                                           </tbody>
                                                       </table>
                                                     @else
@@ -121,6 +133,43 @@
                   </div>
               </div>
             @include('includes.footer_content')
+            @section('footer_page')
+            <script>
+                  $(document).ready(function(){
+
+                    $('.delete').on('click',function(e){
+                      e.preventDefault();
+                          announcementId = $(this).attr("announcementId");
+                          $.confirm({
+                                title: 'Delete Announcement',
+                                content: 'You want to delete the annoucement ?',
+                                type: 'red',
+                                typeAnimated: true,
+                                icon: 'fa fa-warning',
+
+                                buttons: {
+                                  Confirm: {
+                                            text: 'Confirm',
+                                            btnClass: 'btn-red',
+                                            action: function(){
+                                              window.location.href = "/delete_announcement/"+announcementId;
+
+                                            }
+                                        },
+
+                                    cancel: function () {
+                                        //
+                                    },
+
+                                }
+                            });
+
+                    });
+
+
+                  });
+            </script>
+            @stop
         </div>
   </div>
 

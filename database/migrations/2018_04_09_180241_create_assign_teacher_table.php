@@ -16,9 +16,13 @@ class CreateAssignTeacherTable extends Migration
         Schema::create('assignTeacher', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('sectionId');
-            $table->integer('facultyId');
+            $table->integer('facultyId')->unsigned();
             $table->integer('subjectId');
             $table->timestamps();
+
+            $table->foreign('facultyId')
+                  ->references('id')
+                  ->on('faculties');
         });
     }
 
